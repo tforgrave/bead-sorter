@@ -56,7 +56,7 @@ void loop() {
   }
 
   if (interruptorIsOpen() && shouldDispense) {
-    shouldDispense = false;
     dispense();
+    shouldDispense = false;
   }
 }
