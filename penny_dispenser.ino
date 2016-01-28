@@ -14,10 +14,14 @@ Servo pusher;
 bool shouldDispense = false;
 
 void setup() {
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(INTERRUPTOR_PIN, INPUT_PULLUP);
+  pinMode(SERVO_PIN, OUTPUT);
+  
   angle = MIN_ANGLE;
   pusher.attach(SERVO_PIN);
   pusher.write(angle);
-  
+
 //  Serial.begin(9600);
 }
 
@@ -45,12 +49,14 @@ void dispense()
 }
 
 void loop() {
+  digitalWrite(LED_PIN, digitalRead(INTERRUPTOR_PIN));
+
   if (interruptorIsClosed()) {
     shouldDispense = true;
   }
 
   if (interruptorIsOpen() && shouldDispense) {
-    dispense();
     shouldDispense = false;
+    dispense();
   }
 }
