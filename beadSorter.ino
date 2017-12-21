@@ -34,6 +34,8 @@ void setup() {
 }
 
 void loop() {
+  
+  //put a loop here with 8 if statements
   // put your main code here, to run repeatedly:
   digitalWrite(relayPin1, LOW);
   digitalWrite(relayPin2, HIGH);
